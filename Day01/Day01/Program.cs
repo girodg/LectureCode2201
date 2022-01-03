@@ -8,15 +8,31 @@ namespace Day01
         {
             PrintMessage();
 
-            string msg = GetMessage();
+            string userInput = "Please enter your name: ";
+            string msg = GetMessage(userInput);
+
+            PrintMessage(msg);
+
+            int number = 5;
+            Factor(ref number, 2);
         }
 
-        private static string GetMessage()
+        private static int Factor(ref int steev, int factor)
         {
-            Console.Write("Please enter a message: ");
+            steev *= factor;
+            return 5;
+        }
+
+        private static string GetMessage(string prompt)
+        {
+            Console.Write(prompt);
             return Console.ReadLine();
         }
 
+        static void PrintMessage(string msg)
+        {
+            Console.WriteLine(msg);
+        }
         static void PrintMessage()
         {
             Console.WriteLine("Hello Gotham.");
