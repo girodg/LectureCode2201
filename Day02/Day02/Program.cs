@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Day02
 {
@@ -25,6 +26,21 @@ namespace Day02
             Console.WriteLine(numList[3]);
 
             ListChallenge();
+
+            Split();
+        }
+
+        private static void Split()
+        {
+
+            string csv = "Steev,Steven,Stephen,-Stephie-Stefan";
+            Console.WriteLine(csv);
+            char[] delimiters = new char[] { ',', '-' };
+            string[] data = csv.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var item in data)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         static void ListChallenge()
@@ -41,6 +57,21 @@ namespace Day02
             int numberDropped = DropFailing(grades);
             Console.WriteLine($"{numberDropped} grades dropped.");
             PrintGrades(grades);
+            List<double> newGrades = CurveGrades(grades);
+            PrintGrades(newGrades);
+        }
+
+        private static List<double> CurveGrades(List<double> grades)
+        {
+            List<double> curved = grades.ToList();//clone the list
+            for (int i = 0; i < curved.Count; i++)
+            {
+            //    curved[i] += 5;
+            //    if (curved[i] > 100) curved[i] = 100;
+                //OR
+                curved[i] = (curved[i] > 95) ? 100 : curved[i] + 5;
+            }
+            return curved;
         }
 
         private static int DropFailing(List<double> grades)
@@ -116,6 +147,20 @@ namespace Day02
             foreach (int number in numbers)
                 Console.WriteLine(number);
 
+
+            //convert to a list
+            //1> call ToList
+            List<int> numList = numbers.ToList();
+
+            //2> pass to the list constructor
+            List<int> numList2 = new List<int>(numbers);
+
+            //3> use a loop
+            List<int> numList3 = new List<int>();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numList3.Add(numbers[i]);
+            }
         }
 
         static int Add(int num1, int num2)
