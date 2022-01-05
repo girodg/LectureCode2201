@@ -34,6 +34,36 @@ namespace Day02
                 grades.Add(rando.NextDouble() * 100);
                 PrintInfo(grades);
             }
+            PrintGrades(grades);
+        }
+
+        static void PrintGrades(List<double> pg2)
+        {
+            Console.WriteLine("------------GRADES-----------");
+            //for (int i = 0; i < pg2.Count; i++)
+            //{
+            //    Console.WriteLine($"{pg2[i],7:N2}");
+            //}
+            foreach (var grade in pg2)
+            {
+                //if (grade < 59.5) Console.ForegroundColor = ConsoleColor.Red;
+                //else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                //else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
+                //else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
+                //else
+                //    Console.ForegroundColor = ConsoleColor.Green;
+
+                //ternary operator
+                //(condition) ? :
+                Console.ForegroundColor = (grade < 59.5) ? ConsoleColor.Red :
+                                          (grade < 69.5) ? ConsoleColor.DarkYellow :
+                                          (grade < 79.5) ? ConsoleColor.Yellow :
+                                          (grade < 89.5) ? ConsoleColor.Blue :
+                                          ConsoleColor.Green;
+
+                Console.WriteLine($"{grade,5:N2}");
+            }
+            Console.ResetColor();
         }
 
         private static void PrintInfo(List<double> grades)
