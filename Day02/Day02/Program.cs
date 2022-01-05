@@ -20,6 +20,9 @@ namespace Day02
             {
                 Console.WriteLine(numList[i]);
             }
+            Console.WriteLine(numList[3]);
+            numList.Remove(2);//use the index
+            Console.WriteLine(numList[3]);
 
             ListChallenge();
         }
@@ -35,6 +38,39 @@ namespace Day02
                 PrintInfo(grades);
             }
             PrintGrades(grades);
+            int numberDropped = DropFailing(grades);
+            Console.WriteLine($"{numberDropped} grades dropped.");
+            PrintGrades(grades);
+        }
+
+        private static int DropFailing(List<double> grades)
+        {
+            int numDropped = 0;
+            //Loop over the grades list and remove all failing grades. Keep track of how many grades were removed.
+            //Return the # of grades that were removed
+            //Call DropFailing from the ListChallenge method.
+            //Print the number of failing grades that were removed.
+            //Print the grades again.
+            //for (int i = 0; i < grades.Count; i++)
+            //{
+            //    if(grades[i] < 59.5)
+            //    {
+            //        ++numDropped;
+            //        grades.RemoveAt(i);
+            //        --i;
+            //    }
+            //}
+            //OR
+            for (int i = grades.Count - 1; i >= 0; i--)
+            {
+                if (grades[i] < 59.5)
+                {
+                    ++numDropped;
+                    grades.RemoveAt(i);
+                }
+            }
+
+            return numDropped;
         }
 
         static void PrintGrades(List<double> pg2)
