@@ -21,11 +21,27 @@ namespace Day03
 
             //will NOT throw an exception. will overwrite the value if key already exists.
             menu["Curly Fries"] = 1.50F;
+
             Console.WriteLine("------------MENU-------------");
             foreach (KeyValuePair<string,float> menuItem in menu)
             {
                 Console.WriteLine($"{menuItem.Value,7:C2} {menuItem.Key}");
             }
+
+            bool wasDropped = menu.Remove("Curly Fries");
+            if(wasDropped)
+                Console.WriteLine("The menu item was removed.");
+            wasDropped = menu.Remove("Chicken nuggets");
+            if(!wasDropped)
+                Console.WriteLine("of course, this is not a kids restaurant!");
+
+            string fries = "Curly Fries";
+            if(menu.TryGetValue(fries, out float price))
+            {
+                Console.WriteLine($"{fries} cost {price,5:C2}");
+            }
+            else
+                Console.WriteLine("of course, this is not a kids restaurant!");
 
             Random randy = new Random();
             Dictionary<string, double> pg2 = new Dictionary<string, double>()
@@ -52,6 +68,33 @@ namespace Day03
             pg2["Khyren"] = randy.NextDouble() * 100;
 
             PrintGrades(pg2);
+            DropStudent(pg2);
+            PrintGrades(pg2);
+            CurveStudent(pg2);
+            PrintGrades(pg2);
+        }
+        static void CurveStudent(Dictionary<string, double> students)
+        {
+            Console.Write("Please enter a student to curve: ");
+            string student = Console.ReadLine();
+            if (students.TryGetValue(student, out double grade))
+            {
+                students[student] = (grade < 95) ? grade + 5 : 100;
+            }
+            else
+            {
+                Console.WriteLine($"{student} was not enrolled.");
+            }
+        }
+
+
+        static void DropStudent(Dictionary<string, double> students)
+        {
+            Console.Write("Please enter a student to drop: ");
+            string student = Console.ReadLine();
+            bool wasRemoved = students.Remove(student);
+            if (wasRemoved) Console.WriteLine($"{student} was dropped from the course.");
+            else Console.WriteLine($"{student} was not found!!");
         }
 
         static void PrintGrades(Dictionary<string, double> grades)
