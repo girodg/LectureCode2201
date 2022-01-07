@@ -7,6 +7,8 @@ namespace Day03
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Press any key to start...");
+            Console.ReadKey();
             Arrays();
 
             Dictionary<string, float> menu = new Dictionary<string, float>()
@@ -83,6 +85,7 @@ namespace Day03
             }
             else
             {
+                //$ - interpolated string
                 Console.WriteLine($"{student} was not enrolled.");
             }
         }
@@ -104,13 +107,17 @@ namespace Day03
             {
                 Console.Write($"{student.Key}");
                 Console.CursorLeft = 15;
+                if (student.Value < 59.5)
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                else
+                    Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = (student.Value < 59.5) ? ConsoleColor.Red :
                                           (student.Value < 69.5) ? ConsoleColor.DarkYellow :
                                           (student.Value < 79.5) ? ConsoleColor.Yellow :
                                           (student.Value < 89.5) ? ConsoleColor.Blue :
                                                                ConsoleColor.Green;
 
-                Console.WriteLine($"{student.Value,7:N2}");
+                Console.WriteLine($"{student.Value,10:N2}");
                 Console.ResetColor();
             }
         }
