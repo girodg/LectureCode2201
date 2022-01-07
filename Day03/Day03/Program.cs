@@ -40,6 +40,36 @@ namespace Day03
             pg2["Will"] = randy.NextDouble() * 100;
             pg2["David"] = randy.NextDouble() * 100;
             pg2["Sebastian"] = randy.NextDouble() * 100;
+            pg2["Glenn"] = randy.NextDouble() * 100;
+            pg2["Andre"] = randy.NextDouble() * 100;
+            pg2["Dominic"] = randy.NextDouble() * 100;
+            pg2["Jaleen"] = randy.NextDouble() * 100;
+            pg2["Amari"] = randy.NextDouble() * 100;
+            pg2["Jaelen"] = randy.NextDouble() * 100;
+            pg2["Benjamin"] = randy.NextDouble() * 100;
+            pg2["Edward"] = randy.NextDouble() * 100;
+            pg2["Victoria"] = randy.NextDouble() * 100;
+            pg2["Khyren"] = randy.NextDouble() * 100;
+
+            PrintGrades(pg2);
+        }
+
+        static void PrintGrades(Dictionary<string, double> grades)
+        {
+            Console.WriteLine("-----------GRADES-----------");
+            foreach (var student in grades)
+            {
+                Console.Write($"{student.Key}");
+                Console.CursorLeft = 15;
+                Console.ForegroundColor = (student.Value < 59.5) ? ConsoleColor.Red :
+                                          (student.Value < 69.5) ? ConsoleColor.DarkYellow :
+                                          (student.Value < 79.5) ? ConsoleColor.Yellow :
+                                          (student.Value < 89.5) ? ConsoleColor.Blue :
+                                                               ConsoleColor.Green;
+
+                Console.WriteLine($"{student.Value,7:N2}");
+                Console.ResetColor();
+            }
         }
 
         static void Arrays()
