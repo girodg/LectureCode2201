@@ -1,13 +1,26 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Day04
 {
+    enum Superpower
+    {
+        Flight, Teleportation, Telekinesis, XRayVision, Strength, Money, Speed, Invibisility, Swimming
+    }
+    class Superhero
+    {
+        public string Name { get; set; }
+        public string Secret { get; set; }
+        public Superpower Power { get; set; }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
+            #region CSV
             string filePath = @"C:\temp\2201\sample.txt";
             char delimiter = '+';
             using (StreamWriter sw = new StreamWriter(filePath))
@@ -30,7 +43,7 @@ namespace Day04
             {
                 Console.WriteLine("-------DATA---------");
                 string line;
-                while((line = sr.ReadLine()) != null)
+                while ((line = sr.ReadLine()) != null)
                 {
                     string[] data = line.Split('+');
                     foreach (var item in data)
@@ -42,6 +55,27 @@ namespace Day04
 
             //does all 3 steps: opens, reads, closes the file
             string fileData = File.ReadAllText(filePath);
+            #endregion
+
+            #region Serializing
+            //change the extension to .json
+            filePath = Path.ChangeExtension(filePath, ".json");
+
+            List<Superhero> heroes = new List<Superhero>();
+            heroes.Add(new Superhero() { Name = "Batman", Secret = "Bruce Wayne", Power = Superpower.Money });
+            heroes.Add(new Superhero() { Name = "Wonder Woman", Secret = "Diana Prince", Power = Superpower.Strength });
+            heroes.Add(new Superhero() { Name = "Flash", Secret = "Barry Allen", Power = Superpower.Speed });
+            heroes.Add(new Superhero() { Name = "Aquaman", Secret = "Arthur Curry", Power = Superpower.Swimming });
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                using (JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    jtw.Formatting = Formatting.Indented;
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jtw, heroes);
+                }
+            }
+            #endregion
         }
         static void WriteData(string fPath)
         {
