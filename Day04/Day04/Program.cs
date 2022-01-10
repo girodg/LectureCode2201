@@ -75,6 +75,35 @@ namespace Day04
                     serializer.Serialize(jtw, heroes);
                 }
             }
+
+            WriteJson("challenge.txt");
+            #endregion
+
+            #region Deserialization
+            //check if the file is there
+            if(File.Exists(filePath))
+            {
+                //get the json data
+                string jsonText = File.ReadAllText(filePath);
+
+                //deserialize the data
+                try
+                {
+                    List<Superhero> dc = JsonConvert.DeserializeObject<List<Superhero>>(jsonText);
+                    foreach (var item in dc)
+                    {
+                        Console.WriteLine($"Hi. I am {item.Name}, aka {item.Secret}. And I can {item.Power}. ");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{filePath} does not exists.");
+            }
             #endregion
         }
         static void WriteData(string fPath)
@@ -110,6 +139,21 @@ namespace Day04
             for (int i = 0; i < numbers.Count; i++)
             {
                 Console.WriteLine(numbers[i]);
+            }
+        }
+
+        static void WriteJson(string fPath)
+        {
+            fPath = Path.ChangeExtension(fPath, "json");
+            List<int> nums = new List<int>() { 5, 4, 3, 2, 1 };
+            using (StreamWriter sw = new StreamWriter(fPath))
+            {
+                using (JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    jtw.Formatting = Formatting.Indented;
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jtw, nums);//saves the list of ints to the file
+                }
             }
         }
     }
