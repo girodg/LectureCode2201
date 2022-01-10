@@ -77,6 +77,12 @@ namespace Day04
             }
 
             WriteJson("challenge.txt");
+            List<int> nums = ReadJson("challenge.txt");
+            Console.WriteLine("----------------NUMS-----------");
+            for (int i = 0; i < nums.Count; i++)
+            {
+                Console.WriteLine(nums[i]);
+            }
             #endregion
 
             #region Deserialization
@@ -155,6 +161,26 @@ namespace Day04
                     serializer.Serialize(jtw, nums);//saves the list of ints to the file
                 }
             }
+        }
+
+        static List<int> ReadJson(string fPath)
+        {
+            fPath = Path.ChangeExtension(fPath, "json");
+            List<int> numbers = null;
+            if (File.Exists(fPath))
+            {
+                string fText = File.ReadAllText(fPath);
+                try
+                {
+                    numbers = JsonConvert.DeserializeObject<List<int>>(fText);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return numbers;
         }
     }
 }
