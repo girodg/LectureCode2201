@@ -22,6 +22,26 @@ namespace Day04
             }
             filePath = "challenge.txt";
             WriteData(filePath);
+            ReadData(filePath);
+
+            filePath = @"C:\temp\2201\sample.txt";
+            //1. open the file
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                Console.WriteLine("-------DATA---------");
+                string line;
+                while((line = sr.ReadLine()) != null)
+                {
+                    string[] data = line.Split('+');
+                    foreach (var item in data)
+                    {
+                        Console.WriteLine(item);
+                    }
+                }
+            }//3. Close the file
+
+            //does all 3 steps: opens, reads, closes the file
+            string fileData = File.ReadAllText(filePath);
         }
         static void WriteData(string fPath)
         {
@@ -38,6 +58,24 @@ namespace Day04
                     sw.Write(nums[i]);
                     isFirst = false;
                 }
+            }
+        }
+        static void ReadData(string fPath)
+        {
+            //-------read the file and split the data
+            string fileData = File.ReadAllText(fPath);
+            string[] fData = fileData.Split('=');
+
+            List<int> numbers = new List<int>();
+            foreach (string item in fData)
+            {
+                if (int.TryParse(item, out int number))
+                    numbers.Add(number);
+            }
+            Console.WriteLine("----------NUMBERS-----------");
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                Console.WriteLine(numbers[i]);
             }
         }
     }
