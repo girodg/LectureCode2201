@@ -30,7 +30,22 @@ namespace Day05
 
             long result = Factorial(5);
             Console.WriteLine($"5! = {result}");
+
+            int[] numbers = new int[] { 5, 1, 13, 7, 42 };
+            Print(numbers);
+            Swap(numbers, 2, 3);
+            Print(numbers);
         }
+
+        private static void Print(int[] numbers)
+        {
+            Console.WriteLine("--------numbers---------");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
         static void Recursive(int num)
         {
             Console.WriteLine(num);
@@ -68,6 +83,13 @@ namespace Day05
 
             long result = N * Factorial2(N - 1);
             return result;
+        }
+
+        static void Swap(int[] nums, int index1, int index2)
+        {
+            int temp = nums[index1];
+            nums[index1] = nums[index2];
+            nums[index2] = temp;
         }
     }
 }
