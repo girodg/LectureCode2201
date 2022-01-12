@@ -8,6 +8,10 @@ namespace Day05
         {
             int k = 0;
             Recursive(k);
+            Console.Clear();
+
+            int m = 0;
+            Bats(m);
 
             for (int j = 0; j < 10; j++)
             {
@@ -34,5 +38,16 @@ namespace Day05
                 Console.WriteLine(num);
             }
         }//returns from the method
+
+        static void Bats(int m)
+        {
+            if(m < 100)
+            {
+                Console.Write((char)78);
+                Console.Write((char)65);
+                Console.Write(' ');
+                Bats(m + 1);
+            }
+        }
     }
 }
