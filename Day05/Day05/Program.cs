@@ -49,6 +49,30 @@ namespace Day05
                 Console.WriteLine($"{s1} EQUALS {s2}");
             else if (compResult == 1)
                 Console.WriteLine($"{s1} GREATER THAN {s2}");
+
+            CompareString();
+        }
+
+        static void CompareString()
+        {
+            do
+            {
+
+                Console.WriteLine("Please enter 2 strings to compare.");
+                string s1 = Console.ReadLine();
+                string s2 = Console.ReadLine();
+                int compResult = s1.CompareTo(s2);
+                if (compResult == -1)
+                    Console.WriteLine($"{s1} LESS THAN {s2}");
+                else if (compResult == 0)
+                    Console.WriteLine($"{s1} EQUALS {s2}");
+                else if (compResult == 1)
+                    Console.WriteLine($"{s1} GREATER THAN {s2}");
+
+                Console.WriteLine("Compare again? (any key = yes, esc = no)"); 
+
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
+            
         }
 
         private static void Print(int[] numbers)
