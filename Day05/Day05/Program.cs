@@ -35,6 +35,20 @@ namespace Day05
             Print(numbers);
             Swap(numbers, 2, 3);
             Print(numbers);
+
+            Console.WriteLine("-----------COMPARETO---------");
+            string s1 = "Batman", s2 = "Aquaman";
+            //CompareTo: 
+            // -1 if <
+            //  0 if =
+            //  1 if >
+            int compResult = s1.CompareTo(s2);
+            if(compResult == -1)
+                Console.WriteLine($"{s1} LESS THAN {s2}");
+            else if(compResult == 0)
+                Console.WriteLine($"{s1} EQUALS {s2}");
+            else if (compResult == 1)
+                Console.WriteLine($"{s1} GREATER THAN {s2}");
         }
 
         private static void Print(int[] numbers)
