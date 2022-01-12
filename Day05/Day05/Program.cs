@@ -27,6 +27,9 @@ namespace Day05
             {
                 i++;
             }
+
+            long result = Factorial(5);
+            Console.WriteLine($"5! = {result}");
         }
         static void Recursive(int num)
         {
@@ -48,6 +51,23 @@ namespace Day05
                 Console.Write(' ');
                 Bats(m + 1);
             }
+        }
+
+        static long Factorial(int N)
+        {
+            long result = 1;
+            if (N > 1)
+            {
+                result = N * Factorial(N - 1);
+            }
+            return result;
+        }
+        static long Factorial2(int N)
+        {
+            if (N <= 1) return 1;
+
+            long result = N * Factorial2(N - 1);
+            return result;
         }
     }
 }
