@@ -18,6 +18,7 @@ namespace Day07CL
 
         // m_fMilesPerGallon or m_milesPerGallon mMilesPerGallon 
         private float _milesPerGallon;
+        private static int _numberOfCarsBuilt = 0;
         #endregion
 
         #region Properties
@@ -51,9 +52,22 @@ namespace Day07CL
         {
             MilesPerGallon = mpg;
             HorsePower = hp;
+            _numberOfCarsBuilt++;
         }
         #endregion
 
+        public static void ModelDetails() //there is NO this parameter
+        {
+            Console.WriteLine($"Number of cars: {_numberOfCarsBuilt}");
+        }
+
+        //instance method
+        //hidden parameter: this. the instance the method is called on
+        //batmobile.CarDetails() this = batmobile
+        public void CarDetails() 
+        {
+            Console.WriteLine($"MPG: {this.MilesPerGallon}\tHorse Power: {HorsePower}");
+        }
         void DoIt(int number)
         {
             float milesPerGallon = 12F;
