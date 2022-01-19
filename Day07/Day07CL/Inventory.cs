@@ -29,5 +29,11 @@ namespace Day07CL
             get { return _items; }
             private set { _items = value; }
         }
+
+        public Inventory(int capacity, List<string> items)
+        {
+            Capacity = capacity;
+            Items = items.ToList();//clone the list
+        }
     }
 }
