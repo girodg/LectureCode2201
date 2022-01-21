@@ -35,6 +35,7 @@ namespace Day07
             items.Add(sting);
             items.Add(new BowWeapon(10, 5, WeaponRarity.Rare, 50, 5, 1000));
             Inventory backpack = new Inventory(15, items);
+            backpack.PrintInventory();
 
             Truck ranger = new Truck(7000, 10, 300);
             Car myRide = ranger;

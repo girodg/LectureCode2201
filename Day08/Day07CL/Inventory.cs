@@ -43,5 +43,17 @@ namespace Day07CL
 
             _items.Add(itemToAdd);
         }
+
+        public void PrintInventory()
+        {
+            foreach (FantasyWeapon weapon in Items)
+            {
+                Console.WriteLine($"Rarity: {weapon.Rarity} Max Damage: {weapon.MaxDamage} Level: {weapon.Level} Cost: {weapon.Cost}");
+                if (weapon is BowWeapon bow)//downcasting using pattern matching
+                {
+                    Console.WriteLine($"\tArrow Capacity: {bow.ArrowCapacity} Arrow Count: {bow.ArrowCount}");
+                }
+            }
+        }
     }
 }
