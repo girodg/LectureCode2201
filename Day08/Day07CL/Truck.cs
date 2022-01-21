@@ -14,5 +14,11 @@ namespace Day07CL
             Console.WriteLine("\tTruck Constructor");
             Towing = towing;
         }
+
+        public override void CarDetails()
+        {
+            base.CarDetails();//extending the base method
+            Console.WriteLine($"\tTowing: {Towing}");
+        }
     }
 }

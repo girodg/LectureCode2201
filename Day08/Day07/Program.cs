@@ -38,7 +38,11 @@ namespace Day07
             backpack.PrintInventory();
 
             Truck ranger = new Truck(7000, 10, 300);
+            ranger.CarDetails();
             Car myRide = ranger;
+            myRide.CarDetails();//which CarDetails will it call?
+
+
             myRide = batmobile;
             try
             {

@@ -26,5 +26,12 @@ namespace Day07CL
             Level = level;
             Cost = cost;
         }
+
+        public virtual void Display()
+        {
+            Console.Write("-----------Fantasy Weapon: ");
+            Console.WriteLine($"Rarity: {Rarity} Max Damage: {MaxDamage} Level: {Level} Cost: {Cost}");
+
+        }
     }
 }

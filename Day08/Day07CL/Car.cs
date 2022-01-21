@@ -65,8 +65,9 @@ namespace Day07CL
         //instance method
         //hidden parameter: this. the instance the method is called on
         //batmobile.CarDetails() this = batmobile
-        public void CarDetails() 
+        public virtual void CarDetails() 
         {
+            Console.WriteLine("-----------CAR DETAILS--------------");
             Console.WriteLine($"MPG: {this.MilesPerGallon}\tHorse Power: {HorsePower}");
         }
         void DoIt(int number)

@@ -17,5 +17,12 @@ namespace Day07CL
             ArrowCapacity = arrowCap;
             ArrowCount = arrowCount;
         }
+
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine($"\t Bow Weapon:   Arrow Capacity: {ArrowCapacity} Arrow Count: {ArrowCount}");
+
+        }
     }
 }
