@@ -34,6 +34,8 @@ namespace Day07
             FantasyWeapon sting = new FantasyWeapon(WeaponRarity.Legendary, 200, 50, 100000);
             int damage = sting.DoDamage();
             Console.WriteLine($"Damage: {damage}");
+
+            Truck ranger = new Truck(10, 300);
         }
 
         void DoSomething(WinLoss winLoss)

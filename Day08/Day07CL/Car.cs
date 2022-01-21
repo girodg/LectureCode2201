@@ -50,6 +50,7 @@ namespace Day07CL
         #region Constructors
         public Car(float mpg, int hp)
         {
+            Console.WriteLine("Car Constructor");
             MilesPerGallon = mpg;
             HorsePower = hp;
             _numberOfCarsBuilt++;
