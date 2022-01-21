@@ -9,7 +9,7 @@ namespace Day07CL
     public class Inventory
     {
         private int _capacity;
-        private List<string> _items;
+        private List<FantasyWeapon> _items;
 
         public int Capacity
         {
@@ -24,19 +24,19 @@ namespace Day07CL
             get { return _items.Count; }
         }
 
-        public List<string> Items
+        public List<FantasyWeapon> Items
         {
             get { return _items; }
             private set { _items = value; }
         }
 
-        public Inventory(int capacity, List<string> items)
+        public Inventory(int capacity, List<FantasyWeapon> items)
         {
             Capacity = capacity;
             Items = items.ToList();//clone the list
         }
 
-        public void AddItem(string itemToAdd)
+        public void AddItem(FantasyWeapon itemToAdd)
         {
             if (Count == Capacity)
                 throw new Exception("Your backpack is full!");

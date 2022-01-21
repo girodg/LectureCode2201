@@ -23,19 +23,42 @@ namespace Day07
             batmobile.CarDetails();
             herbie.CarDetails();
 
-            List<string> items = new List<string>()
+            List<FantasyWeapon> items = new List<FantasyWeapon>()
             {
-                "sword",
-                "invisibility potion",
-                "shield"
+                new FantasyWeapon(WeaponRarity.Common, 100, 1, 10),
+                new FantasyWeapon(WeaponRarity.Legendary, 1000, 100, 100000)
             };
-            Inventory backpack = new Inventory(15, items);
 
             FantasyWeapon sting = new FantasyWeapon(WeaponRarity.Legendary, 200, 50, 100000);
             int damage = sting.DoDamage();
             Console.WriteLine($"Damage: {damage}");
+            items.Add(sting);
+            items.Add(new BowWeapon(10, 5, WeaponRarity.Rare, 50, 5, 1000));
+            Inventory backpack = new Inventory(15, items);
 
-            Truck ranger = new Truck(10, 300);
+            Truck ranger = new Truck(7000, 10, 300);
+            Car myRide = ranger;
+            myRide = batmobile;
+            try
+            {
+                Truck otherRide = (Truck)myRide;//will cause an exception if myRide is NOT a Truck
+
+            }
+            catch (Exception)
+            {
+            }
+
+            //if myRide is NOT a truck, it will assign NULL to truck
+            //will not throw exception
+            Truck truck = myRide as Truck;
+            if(truck != null)
+                Console.WriteLine(truck.Towing);
+
+            //pattern matching
+            if(myRide is Truck trucky)
+            {
+                Console.WriteLine(trucky.Towing);
+            }
         }
 
         void DoSomething(WinLoss winLoss)
